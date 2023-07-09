@@ -1,0 +1,26 @@
+@startuml
+
+package "AMAZON SERVICE" {
+ [Amazon API GATEWAY] - [AWS Lambda]
+ REST - [Amazon API GATEWAY]
+}
+
+cloud {
+  [Amazon RDS]
+}
+
+
+database "PostgresSQL" {
+  folder "Table Courses" {
+    [Courses]
+  }
+  frame "Table Enrollments" {
+    [Enrollments]
+  }
+}
+
+[AWS Lambda] --> [Amazon RDS]
+[Amazon RDS] --> [Courses]
+[Courses] --> [Enrollments]
+
+@enduml
